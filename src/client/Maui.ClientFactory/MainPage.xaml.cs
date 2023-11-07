@@ -1,4 +1,5 @@
-﻿using Maui.Domain.Contracts;
+﻿using Maui.Connection.Services.Core;
+using Maui.Domain.Contracts;
 
 namespace Maui.ClientFactory
 {

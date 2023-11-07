@@ -23,8 +23,12 @@ namespace Maui.ClientFactory
             builder.Logging.AddDebug();
 #endif
 
-            builder.Services.AddTransient<MainPage>();
-            builder.Services.AddHttpClient<ICustomerService, CustomerService>();
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddHttpClient<ICustomerService, CustomerService>(client =>
+            {
+                client.BaseAddress = new Uri("http://localhost:5053");
+            });
+
             builder.Services.AddTransient<IMainPageViewModel, MainPageViewModel>();
 
             return builder.Build();
