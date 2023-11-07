@@ -49,7 +49,33 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Maui.Connection\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Remove="Maui.Connection\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Remove="Maui.Connection\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiCss Remove="Maui.Connection\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Maui.Connection\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Maui.Connection\Maui.Connection.csproj" />
+	  <ProjectReference Include="..\Maui.Domain\Maui.Domain.csproj" />
 	</ItemGroup>
 
 </Project>

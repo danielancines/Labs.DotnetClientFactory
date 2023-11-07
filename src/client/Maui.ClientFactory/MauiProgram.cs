@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Maui.Connection.Services;
+using Maui.Connection.Services.Core;
+using Maui.Domain.Contracts;
+using Maui.Domain.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace Maui.ClientFactory
 {
@@ -16,8 +20,12 @@ namespace Maui.ClientFactory
                 });
 
 #if DEBUG
-		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
+
+            builder.Services.AddTransient<MainPage>();
+            builder.Services.AddHttpClient<ICustomerService, CustomerService>();
+            builder.Services.AddTransient<IMainPageViewModel, MainPageViewModel>();
 
             return builder.Build();
         }

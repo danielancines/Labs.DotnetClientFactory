@@ -1,24 +1,21 @@
-﻿namespace Maui.ClientFactory
+﻿using Maui.Domain.Contracts;
+
+namespace Maui.ClientFactory
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        private readonly IMainPageViewModel _mainPageViewModel;
 
-        public MainPage()
+        public MainPage(IMainPageViewModel mainPageViewModel)
         {
+            this._mainPageViewModel = mainPageViewModel;
+            this.BindingContext = this._mainPageViewModel;
             InitializeComponent();
         }
 
         private void OnCounterClicked(object sender, EventArgs e)
         {
-            count++;
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
         }
     }
 }
